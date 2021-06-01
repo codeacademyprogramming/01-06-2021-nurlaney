@@ -1,5 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { weatherService } from "../Weather/service";
+import { Item } from "./Item";
+import { Units } from "./Units";
+import { WeatherInput } from "./WeatherInput";
 
 interface IWeather {
   id: number;
@@ -52,72 +55,19 @@ export const Weather = () => {
     <div className="container mt-5">
       <div className="row align-items-center">
         <div className="col">
-          <input
-            value={city}
-            type="text"
-            className="form-control"
-            placeholder="First name"
-            onKeyPress={search}
-            onChange={(e) => setCity(e.target.value)}
-          />
+          <WeatherInput city={city} search={search} setCity={setCity} />
         </div>
         <div className="col">
-          <div className="col-sm-10">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="metric"
-                defaultChecked
-                onChange={handleRadio}
-              />
-              <label className="form-check-label" htmlFor="Celsius">
-                Celsius
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios2"
-                value="kelvin"
-                onChange={handleRadio}
-              />
-              <label className="form-check-label" htmlFor="Kelvin">
-                Kelvin
-              </label>
-            </div>
-            <div className="form-check disabled">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios3"
-                value="imperial"
-                onChange={handleRadio}
-              />
-              <label className="form-check-label" htmlFor="Fahrenheit">
-                Fahrenheit
-              </label>
-            </div>
-          </div>
+          <Units handleRadio={handleRadio} />
         </div>
       </div>
       <ul>
         {weather.map((item) => (
-          <li key={item.id}>
-            <div style={{ display: "inline" }}>
-              <button onClick={handleRemoveCity} id={item.id.toString()}>
-                -
-              </button>
-            </div>
-            <div style={{ display: "inline" }}>
-              {item.name} - {item.main.temp}
-            </div>
-          </li>
+          <Item
+            key={item.main.temp}
+            item={item}
+            handleRemoveCity={handleRemoveCity}
+          />
         ))}
       </ul>
     </div>
