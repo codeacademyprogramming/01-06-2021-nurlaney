@@ -3,14 +3,7 @@ import { weatherService } from "../Weather/service";
 import { Item } from "./Item";
 import { Units } from "./Units";
 import { WeatherInput } from "./WeatherInput";
-
-interface IWeather {
-  id: number;
-  name: string;
-  main: {
-    temp: number;
-  };
-}
+import { IWeather } from "./interface/index";
 
 export const Weather = () => {
   const [city, setCity] = useState<string>("");

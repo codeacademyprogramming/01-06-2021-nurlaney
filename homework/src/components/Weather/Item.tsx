@@ -1,8 +1,9 @@
 import React from "react";
+import { IWeather } from "./interface/index";
 
 interface Props {
-  item: any;
-  handleRemoveCity: any;
+  item: IWeather;
+  handleRemoveCity: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Item = ({ item, handleRemoveCity }: Props) => {

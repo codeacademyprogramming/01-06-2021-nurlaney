@@ -2,7 +2,7 @@ import React from "react";
 
 interface Props {
   city: string;
-  search: any;
+  search: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   setCity: React.Dispatch<React.SetStateAction<string>>;
 }
 
