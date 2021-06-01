@@ -1,10 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { weatherService } from "../Weather/service";
 
 interface IWeather {
   id: number;
   name: string;
-  temp: number;
+  main: {
+    temp: number;
+  };
 }
 
 export const Weather = () => {
@@ -12,11 +14,17 @@ export const Weather = () => {
   const [unit, setUnit] = useState<string>("metric");
   const [weather, setWeather] = useState<IWeather[]>([]);
 
-  const handleRadio = useCallback(
+  const handleRadio = useCallback((e) => {
+    setUnit(e.target.value);
+  }, []);
+
+  const handleRemoveCity = useCallback(
     (e) => {
-      setUnit(e.target.value);
+      const id = Number(e.target.id);
+      const weatherlist = weather.filter((item) => item.id !== id);
+      setWeather(weatherlist);
     },
-    [unit]
+    [weather]
   );
 
   const search = useCallback(
@@ -99,11 +107,18 @@ export const Weather = () => {
         </div>
       </div>
       <ul>
-        <li>ddsds</li>
-        <li>ddsds</li>
-        <li>ddsds</li>
-        <li>ddsds</li>
-        <li>ddsds</li>
+        {weather.map((item) => (
+          <li key={item.id}>
+            <div style={{ display: "inline" }}>
+              <button onClick={handleRemoveCity} id={item.id.toString()}>
+                -
+              </button>
+            </div>
+            <div style={{ display: "inline" }}>
+              {item.name} - {item.main.temp}
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );
