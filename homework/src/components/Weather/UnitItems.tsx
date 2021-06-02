@@ -16,6 +16,7 @@ export const UnitItems = ({ handleRadio }: Props) => {
           value="metric"
           defaultChecked
           onChange={handleRadio}
+          data-testid="radio1"
         />
         <label className="form-check-label" htmlFor="exampleRadios1">
           Celsius
@@ -29,6 +30,7 @@ export const UnitItems = ({ handleRadio }: Props) => {
           id="exampleRadios2"
           value="kelvin"
           onChange={handleRadio}
+          data-testid="radio2"
         />
         <label className="form-check-label" htmlFor="exampleRadios2">
           Kelvin
@@ -42,6 +44,7 @@ export const UnitItems = ({ handleRadio }: Props) => {
           id="exampleRadios3"
           value="imperial"
           onChange={handleRadio}
+          data-testid="radio3"
         />
         <label className="form-check-label" htmlFor="exampleRadios3">
           Fahrenheit

@@ -15,6 +15,7 @@ export const WeatherInput = ({ city, search, setCity }: Props) => {
       placeholder="Type here.."
       onKeyPress={search}
       onChange={(e) => setCity(e.target.value)}
+      data-testid="input"
     />
   );
 };
