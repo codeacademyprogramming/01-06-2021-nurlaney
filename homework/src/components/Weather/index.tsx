@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { FC, useCallback, useState } from "react";
 import { weatherService } from "../Weather/service";
 import { Item } from "./Item";
-import { Units } from "./Units";
+import { UnitItems } from "./UnitItems";
 import { WeatherInput } from "./WeatherInput";
 import { IWeather } from "./interface/index";
 
-export const Weather = () => {
+export const Weather: FC = () => {
   const [city, setCity] = useState<string>("");
   const [unit, setUnit] = useState<string>("metric");
   const [weather, setWeather] = useState<IWeather[]>([]);
@@ -51,7 +51,7 @@ export const Weather = () => {
           <WeatherInput city={city} search={search} setCity={setCity} />
         </div>
         <div className="col">
-          <Units handleRadio={handleRadio} />
+          <UnitItems handleRadio={handleRadio} />
         </div>
       </div>
       <ul>

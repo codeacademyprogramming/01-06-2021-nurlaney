@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 
 interface Props {
-  handleRadio: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleRadio?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Units = ({ handleRadio }: Props) => {
+export const UnitItems = ({ handleRadio }: Props) => {
   return (
     <div className="col-sm-10">
       <div className="form-check">
@@ -17,7 +17,7 @@ export const Units = ({ handleRadio }: Props) => {
           defaultChecked
           onChange={handleRadio}
         />
-        <label className="form-check-label" htmlFor="Celsius">
+        <label className="form-check-label" htmlFor="exampleRadios1">
           Celsius
         </label>
       </div>
@@ -30,7 +30,7 @@ export const Units = ({ handleRadio }: Props) => {
           value="kelvin"
           onChange={handleRadio}
         />
-        <label className="form-check-label" htmlFor="Kelvin">
+        <label className="form-check-label" htmlFor="exampleRadios2">
           Kelvin
         </label>
       </div>
@@ -43,7 +43,7 @@ export const Units = ({ handleRadio }: Props) => {
           value="imperial"
           onChange={handleRadio}
         />
-        <label className="form-check-label" htmlFor="Fahrenheit">
+        <label className="form-check-label" htmlFor="exampleRadios3">
           Fahrenheit
         </label>
       </div>
